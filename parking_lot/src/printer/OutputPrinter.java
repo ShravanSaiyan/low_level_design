@@ -25,4 +25,8 @@ public class OutputPrinter {
     public static void parkCarMessage(int slotNumber) {
         printWithNewLine("Parked the Car at " + slotNumber + " slot");
     }
+
+    public static void slotFreeMessage(String slotNumber) {
+        printWithNewLine("Slot " + slotNumber + " has been free");
+    }
 }

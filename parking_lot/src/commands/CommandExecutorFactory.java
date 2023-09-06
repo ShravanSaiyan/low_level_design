@@ -15,6 +15,7 @@ public class CommandExecutorFactory {
         commands.put(ParkingCommand.CREATE_PARKING_LOT.getCommandName(),
                 new CreateParkingLotCommandExecutor(parkingService));
         commands.put(ParkingCommand.PARK.getCommandName(), new ParkCommandExecutor(parkingService));
+        commands.put(ParkingCommand.LEAVE.getCommandName(), new LeaveCommandExecutor(parkingService));
     }
 
     public CommandExecutor getCommand(String commandName) throws Exception {

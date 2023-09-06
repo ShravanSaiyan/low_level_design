@@ -28,6 +28,7 @@ public class ParkingServiceImpl implements ParkingService {
 
     @Override
     public int park(Car car) throws Exception {
+        checkWhetherParkingLotExists();
         try {
             int availableSlot = parkingStrategy.getNextSlot();
             Slot slot = new Slot(String.valueOf(availableSlot), car);
@@ -39,10 +40,21 @@ public class ParkingServiceImpl implements ParkingService {
         }
     }
 
+    private void checkWhetherParkingLotExists() throws Exception {
+        if (isParkingLotNotAvailable()) {
+            throw new Exception("Parking Lot Does not Exist");
+        }
+    }
+
+    private boolean isParkingLotNotAvailable() {
+        return parkingLot == null;
+    }
 
     @Override
-    public void unpark(Slot slot) {
-
+    public void unpark(String slotNumber) throws Exception {
+        checkWhetherParkingLotExists();
+        parkingLot.makeSlotFree(slotNumber);
+        parkingStrategy.addSlot(Integer.parseInt(slotNumber));
     }
 
     @Override
