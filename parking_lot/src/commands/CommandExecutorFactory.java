@@ -16,6 +16,13 @@ public class CommandExecutorFactory {
                 new CreateParkingLotCommandExecutor(parkingService));
         commands.put(ParkingCommand.PARK.getCommandName(), new ParkCommandExecutor(parkingService));
         commands.put(ParkingCommand.LEAVE.getCommandName(), new LeaveCommandExecutor(parkingService));
+        commands.put(ParkingCommand.STATUS.getCommandName(), new StatusCommandExecutor(parkingService));
+        commands.put(ParkingCommand.REGISTRATION_NUMBERS_WITH_COLOR.getCommandName(),
+                new RegistrationNumbersForCarsWithColorCommandExecutor(parkingService));
+        commands.put(ParkingCommand.SLOT_NUMBER_FOR_REG_NUMBER.getCommandName(),
+                new SlotNumbersForCarsWithRegNumberCommandExecutor(parkingService));
+        commands.put(ParkingCommand.SLOT_NUMBERS_WITH_COLOR.getCommandName(),
+                new SlotNumbersForCarsWithColorCommandExecutor(parkingService));
     }
 
     public CommandExecutor getCommand(String commandName) throws Exception {

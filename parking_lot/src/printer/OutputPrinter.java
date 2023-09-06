@@ -29,4 +29,20 @@ public class OutputPrinter {
     public static void slotFreeMessage(String slotNumber) {
         printWithNewLine("Slot " + slotNumber + " has been free");
     }
+
+    public static void slotInformationMessage() {
+        printWithNewLine("Slot No. Registration Number Colour");
+    }
+
+    public static void emptySlotsMessage() {
+        printWithNewLine("Parking Slots are empty");
+    }
+
+    public static void slotsFullMessage() {
+        printWithNewLine("Parking Slots are full");
+    }
+
+    public static void noCarsAvailableMessage() {
+        printWithNewLine("Cars are not available");
+    }
 }

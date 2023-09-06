@@ -6,14 +6,16 @@ import strategy.ParkingStrategy;
 public interface ParkingService {
     void createParkingLot(ParkingLot parkingLot, ParkingStrategy parkingStrategy) throws Exception;
 
-    int park(Car car) throws Exception;
+    void park(Car car) throws Exception;
 
     void unpark(String slotNumber) throws Exception;
 
-    void getRegistrationNumbersForCarsWithColor(String color);
+    void parkingLotStatus() throws Exception;
 
-    void getSlotNumbersForCarsWithColor(String color);
+    void getRegistrationNumbersForCarsWithColor(String color) throws Exception;
 
-    void getSlotNumberForRegistrationNumber(String registrationNumber);
+    void getSlotNumbersForCarsWithColor(String color) throws Exception;
+
+    void getSlotNumberForRegistrationNumber(String registrationNumber) throws Exception;
 
 }

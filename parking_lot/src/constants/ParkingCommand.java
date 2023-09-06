@@ -6,9 +6,9 @@ public enum ParkingCommand {
     PARK("park"),
     LEAVE("leave"),
     STATUS("status"),
-    REGISTRATION_NUMBERS_WITH_COLOR("registration_numbers_for_cars_with_colour "),
-    SLOT_NUMBERS_WITH_COLOR("slot_numbers_for_cars_with_colour "),
-    SLOT_NUMBER_FOR_REG_NUMBER("slot_number_for_registration_number "),
+    REGISTRATION_NUMBERS_WITH_COLOR("registration_numbers_for_cars_with_colour"),
+    SLOT_NUMBERS_WITH_COLOR("slot_numbers_for_cars_with_colour"),
+    SLOT_NUMBER_FOR_REG_NUMBER("slot_number_for_registration_number"),
 
     EXIT("EXIT");
 
