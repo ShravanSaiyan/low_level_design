@@ -3,13 +3,16 @@ import constants.Mode;
 import mode.FileMode;
 import mode.InteractiveMode;
 import printer.OutputPrinter;
+import service.ParkingService;
+import service.impl.ParkingServiceImpl;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        CommandExecutorFactory commandExecutorFactory = new CommandExecutorFactory();
+        ParkingService parkingService = new ParkingServiceImpl();
+        CommandExecutorFactory commandExecutorFactory = new CommandExecutorFactory(parkingService);
         Scanner scanner = new Scanner(System.in);
 
         OutputPrinter.printWelcome();

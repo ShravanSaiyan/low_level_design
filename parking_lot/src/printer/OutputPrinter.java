@@ -21,4 +21,8 @@ public class OutputPrinter {
     public static void createParkingLotMessage(int initialCapacity) {
         printWithNewLine("Created the parking lot with " + initialCapacity + " slots");
     }
+
+    public static void parkCarMessage(int slotNumber) {
+        printWithNewLine("Parked the Car at " + slotNumber + " slot");
+    }
 }

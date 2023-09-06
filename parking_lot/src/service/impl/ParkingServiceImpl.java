@@ -4,8 +4,9 @@ import model.Car;
 import model.Slot;
 import service.ParkingLot;
 import service.ParkingService;
-import strategy.NaturalOrderingStrategy;
 import strategy.ParkingStrategy;
+
+import java.util.NoSuchElementException;
 
 public class ParkingServiceImpl implements ParkingService {
 
@@ -16,25 +17,26 @@ public class ParkingServiceImpl implements ParkingService {
 
 
     @Override
-    public void createParkingLot(int parkingCapacity) throws Exception {
+    public void createParkingLot(ParkingLot parkingLot, ParkingStrategy parkingStrategy) {
 
-        parkingLot = new ParkingLot(parkingCapacity);
-        parkingStrategy = new NaturalOrderingStrategy();
-
-        for (int i = 0; i < parkingCapacity; i++) {
+        this.parkingLot = parkingLot;
+        this.parkingStrategy = parkingStrategy;
+        for (int i = 0; i < parkingLot.getCapacity(); i++) {
             parkingStrategy.addSlot(i);
         }
     }
 
     @Override
-    public void park(Car car) throws Exception {
-
-        int availableSlot = parkingStrategy.getNextSlot();
-
-        Slot slot = new Slot(String.valueOf(availableSlot), car);
-        parkingLot.assignSlot(slot);
-        parkingStrategy.removeSlot(availableSlot);
-
+    public int park(Car car) throws Exception {
+        try {
+            int availableSlot = parkingStrategy.getNextSlot();
+            Slot slot = new Slot(String.valueOf(availableSlot), car);
+            parkingLot.assignSlot(slot);
+            parkingStrategy.removeSlot(availableSlot);
+            return availableSlot;
+        } catch (NoSuchElementException e) {
+            throw new Exception("Slots are full");
+        }
     }
 
 

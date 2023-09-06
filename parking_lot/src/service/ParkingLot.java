@@ -32,7 +32,7 @@ public class ParkingLot {
 
     public void assignSlot(Slot slot) throws Exception {
 
-        if (isSlotNotAvailable(slot.getSlotNumber())) {
+        if (isSlotNotAvailable(slot.getSlotNumber()) && slots.containsKey(slot.getSlotNumber())) {
             throw new Exception("Slot already assigned");
         }
         slots.put(slot.getSlotNumber(), slot);

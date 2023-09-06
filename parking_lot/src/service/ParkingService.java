@@ -2,10 +2,11 @@ package service;
 
 import model.Car;
 import model.Slot;
+import strategy.ParkingStrategy;
 
 public interface ParkingService {
-    void createParkingLot(int parkingCapacity) throws Exception;
-    void park(Car car) throws Exception;
+    void createParkingLot(ParkingLot parkingLot, ParkingStrategy parkingStrategy) throws Exception;
+    int park(Car car) throws Exception;
     void unpark(Slot slot);
 
     void getRegistrationNumbersForCarsWithColor(String color);

@@ -1,6 +1,7 @@
 package commands;
 
 import constants.ParkingCommand;
+import service.ParkingService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +10,11 @@ public class CommandExecutorFactory {
 
     private final Map<String, CommandExecutor> commands = new HashMap<>();
 
-    public CommandExecutorFactory() {
-        commands.put(ParkingCommand.CREATE_PARKING_LOT.getCommandName(), new CreateParkingLotCommandExecutor());
+
+    public CommandExecutorFactory(ParkingService parkingService) {
+        commands.put(ParkingCommand.CREATE_PARKING_LOT.getCommandName(),
+                new CreateParkingLotCommandExecutor(parkingService));
+        commands.put(ParkingCommand.PARK.getCommandName(), new ParkCommandExecutor(parkingService));
     }
 
     public CommandExecutor getCommand(String commandName) throws Exception {
